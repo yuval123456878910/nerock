@@ -107,5 +107,14 @@ class nerockListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nerockParser#return.
+    def enterReturn(self, ctx:nerockParser.ReturnContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#return.
+    def exitReturn(self, ctx:nerockParser.ReturnContext):
+        pass
+
+
 
 del nerockParser

@@ -64,5 +64,10 @@ class nerockVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by nerockParser#return.
+    def visitReturn(self, ctx:nerockParser.ReturnContext):
+        return self.visitChildren(ctx)
+
+
 
 del nerockParser

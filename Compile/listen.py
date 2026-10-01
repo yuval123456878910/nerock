@@ -29,3 +29,8 @@ class Listener(nerockListener):
 	def enterExpr(self, ctx:nerockParser.ExprContext):
 		expr.Expr(self, ctx)
 		return super().exitExpr(ctx)
+	
+	def exitReturn(self, ctx):
+		print("enter retun")
+		self.builder.ret(self.last_value)
+		return super().enterReturn(ctx)

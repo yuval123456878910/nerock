@@ -1,7 +1,7 @@
 grammar nerock;
 
 prog: command+ EOF;
-command: func_decleration  | expr | decl_var;
+command: func_decleration  | expr | decl_var | return;
 
 block: '{' command* '}';
 
@@ -31,6 +31,8 @@ paramList: '(' (param (',' param)*)? ')';
 returnFunc: ('->' typesKeyword)?;
 
 atom: NUM | FLOAT | STRING | ID;
+
+return: 'return' atom;
 
 // Operators
 PLUS: '+';

@@ -5,7 +5,7 @@ def typeMatch(Vtype: str):
         case 'i32':
             return ir.IntType(32)
         case 'f32':
-            return ir.FloatType(32)
+            return ir.FloatType()
         case 'v':
             return ir.VoidType()
         case _:

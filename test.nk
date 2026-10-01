@@ -1,3 +1,4 @@
-decl main(i32 dw) -> i32 {
-	var Hello i32 = 1
+decl main(i32 dw) -> f32 {
+	var wow f32 = 0.0 + 1.6
+	return 0
 }
