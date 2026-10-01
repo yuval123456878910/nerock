@@ -1,0 +1,3 @@
+decl main(i32 dw) -> i32 {
+	var Hello i32 = 1
+}
