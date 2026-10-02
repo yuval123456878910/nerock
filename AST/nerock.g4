@@ -1,9 +1,10 @@
 grammar nerock;
 
 prog: command+ EOF;
-command: func_decleration  | expr | decl_var | return;
+command: func_decleration  | expr | decl_var | return | importScript;
 
 block: '{' command* '}';
+
 
 // decl main()
 func_decleration: DECL_FUNC
@@ -15,7 +16,9 @@ func_decleration: DECL_FUNC
 
 decl_var: 'var' ID typesKeyword '=' expr;
 
-expr: ID '(' (expr (',' expr)*)? ')'
+call: ID '(' (expr (',' expr)*)? ')';
+
+expr: call
     | atom
     | expr MUL expr
     | expr DIV expr
@@ -25,6 +28,8 @@ expr: ID '(' (expr (',' expr)*)? ')'
 
 typesKeyword: INT_TYPE | STRING_TYPE | FLOAT_TYPE | VOID_TYPE;
 
+importScript: 'declare' ID;
+
 param: typesKeyword ID;
 
 paramList: '(' (param (',' param)*)? ')';
@@ -32,7 +37,7 @@ returnFunc: ('->' typesKeyword)?;
 
 atom: NUM | FLOAT | STRING | ID;
 
-return: 'return' atom;
+return: 'return' expr;
 
 // Operators
 PLUS: '+';

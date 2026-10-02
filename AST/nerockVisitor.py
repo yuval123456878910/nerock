@@ -34,6 +34,11 @@ class nerockVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by nerockParser#call.
+    def visitCall(self, ctx:nerockParser.CallContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by nerockParser#expr.
     def visitExpr(self, ctx:nerockParser.ExprContext):
         return self.visitChildren(ctx)
@@ -41,6 +46,11 @@ class nerockVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by nerockParser#typesKeyword.
     def visitTypesKeyword(self, ctx:nerockParser.TypesKeywordContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by nerockParser#importScript.
+    def visitImportScript(self, ctx:nerockParser.ImportScriptContext):
         return self.visitChildren(ctx)
 
 

@@ -5,6 +5,7 @@ from .returnType import typeMatch
 from AST.nerockParser import nerockParser
 from llvmlite import ir
 import Compile.packager
+from .global_funcs import FormatType
 
 def add(listener, ctx: nerockParser.ExprContext):
     exprValueLeft = listener.values[ctx.expr(0)]
@@ -12,7 +13,7 @@ def add(listener, ctx: nerockParser.ExprContext):
     if exprValueLeft.type != exprValueRight.type:
         raise TypeError("The two expr given aren't the same type! 1. "+exprValueLeft.type+" 2. "+ exprValueRight.type)
     add = None
-    match str(exprValueLeft.type):
+    match FormatType(str(exprValueLeft.type)):
         case 'i32':
             add = listener.builder.add(exprValueLeft, exprValueRight)
         case 'f32':
@@ -21,18 +22,19 @@ def add(listener, ctx: nerockParser.ExprContext):
     listener.values[ctx] = add
 
 def LoadID(listener, ctx: nerockParser.ExprContext):
-    print(listener.variables)
     var = listener.variables[ctx.atom().ID().getText()]
     if var is None:
         raise NameError(var, "is not defined!")
-    
-    returnData = listener.builder.load( var, name=ctx.atom().ID().getText())
+
+    returnData = listener.builder.load(var, name=ctx.atom().ID().getText())
     
     listener.last_value = returnData
     listener.values[ctx] = returnData
     
 
 def Expr(listener, ctx: nerockParser.ExprContext):
+    if ctx in listener.values:
+        return listener.values[ctx]
     if ctx.atom() is not None:
         if ctx.atom().NUM() is not None:
             listener.last_value = ir.IntType(32)(int(ctx.atom().NUM().getText()))
@@ -42,9 +44,26 @@ def Expr(listener, ctx: nerockParser.ExprContext):
             listener.values[ctx] = listener.last_value
         elif ctx.atom().ID() is not None:
             LoadID(listener, ctx)
+
     if ctx.PLUS() is not None:
         Expr(listener, ctx.expr(0))
         Expr(listener, ctx.expr(1))
         add(listener, ctx)
-        
 
+    if ctx.call() is not None:
+        call = ctx.call()
+        name = call.ID().getText()
+        args = ReadArgs(listener,call.expr())
+        if name not in listener.Funcs:
+            raise NameError(name, "is not defined!")
+        call = listener.builder.call(listener.Funcs[name], args, name=name)
+        listener.last_value = call
+        listener.values[ctx] = call
+
+
+def ReadArgs(listener, exprs):
+    data = []
+    for expr in exprs:
+        Expr(listener, expr)
+        data.append(  listener.values[expr] )
+    return data

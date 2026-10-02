@@ -16,6 +16,7 @@ class Listener(nerockListener):
 
 		self.variables = {}
 		self.FuncTypes: dict[packager.Package, ir.types.FunctionType] = {}
+		self.Funcs: dict[str, ir.Function] = {}
 		self.values = {}
 
 	def enterFunc_decleration(self, ctx):
@@ -26,11 +27,10 @@ class Listener(nerockListener):
 		varDecl.varDecl(self, ctx)
 		return super().enterDecl_var(ctx)
 
-	def enterExpr(self, ctx:nerockParser.ExprContext):
+	def exitExpr(self, ctx:nerockParser.ExprContext):
 		expr.Expr(self, ctx)
 		return super().exitExpr(ctx)
 	
 	def exitReturn(self, ctx):
-		print("enter retun")
 		self.builder.ret(self.last_value)
 		return super().enterReturn(ctx)

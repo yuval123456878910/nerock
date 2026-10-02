@@ -4,7 +4,7 @@ from .returnType import typeMatch
 from llvmlite import ir
 import Compile.packager
 from .dependesise import *
-
+from .global_funcs import FormatType
 
 def GetType(data):
     print(data)
@@ -13,12 +13,7 @@ def GetType(data):
     elif isinstance(data, ir.FloatType):
         return 'f32'
 
-def FormatType(type) -> str:
-    match type:
-        case 'f32':
-            return 'float'
-        case _:
-            return type
+
 
 def varDecl(listener, ctx: nerockParser.Decl_varContext):
     if FormatType(ctx.typesKeyword().getText()) != str(listener.last_value.type):

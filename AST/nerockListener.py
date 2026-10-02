@@ -53,6 +53,15 @@ class nerockListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nerockParser#call.
+    def enterCall(self, ctx:nerockParser.CallContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#call.
+    def exitCall(self, ctx:nerockParser.CallContext):
+        pass
+
+
     # Enter a parse tree produced by nerockParser#expr.
     def enterExpr(self, ctx:nerockParser.ExprContext):
         pass
@@ -68,6 +77,15 @@ class nerockListener(ParseTreeListener):
 
     # Exit a parse tree produced by nerockParser#typesKeyword.
     def exitTypesKeyword(self, ctx:nerockParser.TypesKeywordContext):
+        pass
+
+
+    # Enter a parse tree produced by nerockParser#importScript.
+    def enterImportScript(self, ctx:nerockParser.ImportScriptContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#importScript.
+    def exitImportScript(self, ctx:nerockParser.ImportScriptContext):
         pass
 
 

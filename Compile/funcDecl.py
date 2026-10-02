@@ -4,6 +4,7 @@ from . import packager
 from .returnType import typeMatch
 from llvmlite import ir
 import Compile.packager
+
 def getReturnType(ctx: AST.nerockParser.nerockParser.Func_declerationContext):
     return ctx.returnFunc().typesKeyword().getText()
 
@@ -27,10 +28,12 @@ def GetOrCreateType(lister,typeReturn, parametersType) -> ir.types.FunctionType:
         return TypeReturn
     return Item
 
-def addArgss(dictValue, params: list[AST.nerockParser.nerockParser.ParamContext], args):
+def addArgss(lister, params: list[AST.nerockParser.nerockParser.ParamContext], args):
     for param, arg in zip(params, args):
         name = param.ID().getText()
-        dictValue[name] = arg
+        slot = lister.builder.alloca(arg.type, name=name)
+        lister.builder.store(arg,slot)
+        lister.variables[name] = slot
 
 def funcDecl(lister, ctx: AST.nerockParser.nerockParser.Func_declerationContext):
     returnTypeName = getReturnType(ctx) 
@@ -43,5 +46,6 @@ def funcDecl(lister, ctx: AST.nerockParser.nerockParser.Func_declerationContext)
 
     lister.block = lister.CurrentFunc.append_basic_block("entry")
     lister.builder = ir.IRBuilder(lister.block)
-    addArgss(lister.variables, params, lister.CurrentFunc.args)
+    addArgss(lister, params, lister.CurrentFunc.args)
 
+    lister.Funcs[name] = lister.CurrentFunc
