@@ -13,7 +13,7 @@ def getParams(ctx: AST.nerockParser.nerockParser.Func_declerationContext) -> AST
 
 def returnLoopType(params: list[AST.nerockParser.nerockParser.ParamContext]):
     if len(params) == 0:
-        return typeMatch('v')
+        return []
     returnData = []
     for param in params:
         typeGot = typeMatch(param.typesKeyword().getText())
@@ -36,7 +36,9 @@ def addArgss(lister, params: list[AST.nerockParser.nerockParser.ParamContext], a
         lister.variables[name] = slot
 
 def funcDecl(lister, ctx: AST.nerockParser.nerockParser.Func_declerationContext):
-    returnTypeName = getReturnType(ctx) 
+
+
+    returnTypeName = getReturnType(ctx)
     returntype = typeMatch(returnTypeName)
     params = getParams(ctx)
     parameters = returnLoopType(params)

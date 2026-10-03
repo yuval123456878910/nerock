@@ -7,6 +7,7 @@ from llvmlite import ir
 import Compile.packager
 from .global_funcs import FormatType
 
+
 def add(listener, ctx: nerockParser.ExprContext):
     exprValueLeft = listener.values[ctx.expr(0)]
     exprValueRight = listener.values[ctx.expr(1)]
@@ -14,12 +15,28 @@ def add(listener, ctx: nerockParser.ExprContext):
         raise TypeError("The two expr given aren't the same type! 1. "+exprValueLeft.type+" 2. "+ exprValueRight.type)
     add = None
     match FormatType(str(exprValueLeft.type)):
-        case 'i32':
+        case 'i32' | 'i64':
             add = listener.builder.add(exprValueLeft, exprValueRight)
-        case 'f32':
+        case 'f32' |  'f64':
             add = listener.builder.fadd(exprValueLeft, exprValueRight)
     listener.last_value = add
     listener.values[ctx] = add
+
+def sub(listener, ctx: nerockParser.ExprContext):
+    exprValueLeft = listener.values[ctx.expr(0)]
+    exprValueRight = listener.values[ctx.expr(1)]
+    if exprValueLeft.type != exprValueRight.type:
+        raise TypeError("The two expr given aren't the same type! 1. "+exprValueLeft.type+" 2. "+ exprValueRight.type)
+    sub = None
+    match FormatType(str(exprValueLeft.type)):
+        case 'i32' | 'i64':
+            sub = listener.builder.sub(exprValueLeft, exprValueRight)
+        case 'f32' | 'f64':
+            sub = listener.builder.fsub(exprValueLeft, exprValueRight)
+    listener.last_value = sub
+    listener.values[ctx] = sub
+
+
 
 def LoadID(listener, ctx: nerockParser.ExprContext):
     var = listener.variables[ctx.atom().ID().getText()]
@@ -49,6 +66,11 @@ def Expr(listener, ctx: nerockParser.ExprContext):
         Expr(listener, ctx.expr(0))
         Expr(listener, ctx.expr(1))
         add(listener, ctx)
+
+    if ctx.MIN() is not None:
+        Expr(listener, ctx.expr(0))
+        Expr(listener, ctx.expr(1))
+        sub(listener, ctx)
 
     if ctx.call() is not None:
         call = ctx.call()

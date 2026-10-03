@@ -19,6 +19,7 @@ Moudle.data_layout = str(tm.target_data)
 B.walk_compile(Moudle)
 file = save.Save(Moudle)
 file.save_file("main.ll")
+# print(B)
 
 
 mod = llvm.parse_assembly(str(Moudle))

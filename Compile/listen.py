@@ -19,9 +19,18 @@ class Listener(nerockListener):
 		self.Funcs: dict[str, ir.Function] = {}
 		self.values = {}
 
+		self.Included_libaries: dict[str, str] = {}
+
 	def enterFunc_decleration(self, ctx):
 		funcDecl.funcDecl(self,ctx)
 		return super().enterFunc_decleration(ctx)
+
+	def exitFunc_decleration(self, ctx):
+		self.variables = {}
+		self.values = {}
+		self.builder: any = None
+		self.TargetBlock: any = None
+		self.last_value = None
 
 	def exitDecl_var(self, ctx:nerockParser.Decl_varContext):
 		varDecl.varDecl(self, ctx)
