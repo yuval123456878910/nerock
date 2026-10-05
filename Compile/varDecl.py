@@ -8,10 +8,13 @@ from .global_funcs import FormatType
 
 def GetType(data):
     print(data)
-    if isinstance(data, ir.IntType):
-        return 'i32'
-    elif isinstance(data, ir.FloatType):
-        return 'f32'
+    match data.type:
+        case ir.IntType(32):
+            return 'i32'
+        case ir.FloatType():
+            return 'f32'
+        case ir.IntType(1):
+            return 'i1'
 
 
 

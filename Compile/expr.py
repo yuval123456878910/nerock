@@ -39,7 +39,7 @@ def sub(listener, ctx: nerockParser.ExprContext):
 
 
 def LoadID(listener, ctx: nerockParser.ExprContext):
-    var = listener.variables[ctx.atom().ID().getText()]
+    var = listener.variables.get(ctx.atom().ID().getText())
     if var is None:
         raise NameError(var, "is not defined!")
 
@@ -47,7 +47,22 @@ def LoadID(listener, ctx: nerockParser.ExprContext):
     
     listener.last_value = returnData
     listener.values[ctx] = returnData
-    
+
+def Condition_BIGGER_L(listener, ctx: nerockParser.ExprContext):
+    expr1 = listener.values[ctx.expr(0)]
+    expr2 = listener.values[ctx.expr(1)]
+
+    if expr1.type != expr2.type:
+        raise TypeError("Comperetion type arnt the same")
+    ConditionValue = None
+    match FormatType(str(expr1.type)):
+        case 'i32' | 'i64':
+            ConditionValue = listener.builder.icmp_signed(">", expr1, expr2)
+        case 'f32' | 'f64':
+            ConditionValue = listener.builder.fcmp_ordered(">",expr1, expr2)
+
+    listener.last_value = ConditionValue
+    listener.values[ctx] = ConditionValue
 
 def Expr(listener, ctx: nerockParser.ExprContext):
     if ctx in listener.values:
@@ -81,6 +96,11 @@ def Expr(listener, ctx: nerockParser.ExprContext):
         call = listener.builder.call(listener.Funcs[name], args, name=name)
         listener.last_value = call
         listener.values[ctx] = call
+
+    if ctx.BIGGER_L() is not None:
+        Expr(listener, ctx.expr(0))
+        Expr(listener, ctx.expr(1))
+        Condition_BIGGER_L(listener, ctx)
 
 
 def ReadArgs(listener, exprs):

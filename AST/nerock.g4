@@ -18,15 +18,17 @@ decl_var: 'var' ID typesKeyword '=' expr;
 
 call: ID '(' (expr (',' expr)*)? ')';
 
+
 expr: call
     | atom
-    | expr MUL expr
-    | expr DIV expr
-    | expr PLUS expr
-    | expr MIN expr
+    | '-' expr
+    | expr (DIV | MUL) expr
+    | expr (PLUS | MIN) expr
+    | expr (BIGGER_L | LOWER_L) expr
+    | expr EQUAL_C expr
     ;
 
-typesKeyword: INT_TYPE | STRING_TYPE | FLOAT_TYPE | VOID_TYPE;
+typesKeyword: INT_TYPE | STRING_TYPE | FLOAT_TYPE | VOID_TYPE | BOOL_TYPE;
 
 importScript: 'declare' ID;
 
@@ -45,11 +47,16 @@ MIN: '-';
 MUL: '*';
 DIV: '/';
 
+BIGGER_L: '>';
+LOWER_L: '<';
+EQUAL_C: '==';
+
 // Keywords
 DECL_FUNC: 'decl';
 INT_TYPE : 'i32';
 STRING_TYPE : 'str';
 FLOAT_TYPE : 'f32';
+BOOL_TYPE : 'i1';
 VOID_TYPE : 'v';
 
 // Tokens
