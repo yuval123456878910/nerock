@@ -91,7 +91,7 @@ def Expr(listener, ctx: nerockParser.ExprContext):
         call = ctx.call()
         name = call.ID().getText()
         args = ReadArgs(listener,call.expr())
-        if name not in listener.Funcs:
+        if name not in listener.GC_LOAD_FUNCTIONS and name not in listener.Funcs:
             raise NameError(name, "is not defined!")
         call = listener.builder.call(listener.Funcs[name], args, name=name)
         listener.last_value = call

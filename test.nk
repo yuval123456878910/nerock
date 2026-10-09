@@ -1,4 +1,9 @@
-decl main() -> i1 {
+
+decl main() -> i32 {
     var a i32 = 1
-    return 10 > a
+    return PLUS(a, 10)
+}
+
+decl PLUS(i32 num1, i32 num2) -> i32 {
+    return num1 + num2
 }

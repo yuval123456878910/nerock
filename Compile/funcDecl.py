@@ -37,14 +37,9 @@ def addArgss(lister, params: list[AST.nerockParser.nerockParser.ParamContext], a
 
 def funcDecl(lister, ctx: AST.nerockParser.nerockParser.Func_declerationContext):
 
-
-    returnTypeName = getReturnType(ctx)
-    returntype = typeMatch(returnTypeName)
     params = getParams(ctx)
-    parameters = returnLoopType(params)
-    func_type = GetOrCreateType(lister ,returntype, parameters)
     name = ctx.ID().getText()
-    lister.CurrentFunc = ir.Function(lister.Moudle, func_type, name=name)
+    lister.CurrentFunc = lister.Funcs[name]
 
     lister.block = lister.CurrentFunc.append_basic_block("entry")
     lister.builder = ir.IRBuilder(lister.block)

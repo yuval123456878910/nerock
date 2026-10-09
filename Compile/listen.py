@@ -17,6 +17,8 @@ class Listener(nerockListener):
 		self.variables = {}
 		self.FuncTypes: dict[packager.Package, ir.types.FunctionType] = {}
 		self.Funcs: dict[str, ir.Function] = {}
+		self.GC_LOAD_FUNCTIONS = []
+		self.GC_LOAD_VAR_REF = {}
 		self.values = {}
 
 		self.Included_libaries: dict[str, str] = {}
