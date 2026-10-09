@@ -1,3 +1,4 @@
 decl main() -> i1 {
-    return 10 > 1
+    var a i32 = 1
+    return 10 > a
 }

@@ -1,6 +1,6 @@
 from .dependesise import *
 from llvmlite import ir
-
+from .GC.GC import GC_walk
 class build_ast:
     def __init__(self):
         self.context = ""
@@ -21,6 +21,12 @@ class build_ast:
         walker = ParseTreeWalker()
         Lis = Listener(moudle)
         walker.walk(Lis, self.tree)
+
+    def walk_gc(self) -> GC_walk:
+        walker = ParseTreeWalker()
+        GC = GC_walk()
+        walker.walk(GC, self.tree)
+        return GC
 
     
     def __repr__(self):

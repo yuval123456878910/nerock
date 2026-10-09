@@ -3,6 +3,7 @@ import Compile.compile
 from llvmlite import ir
 import llvmlite.binding as llvm
 import save
+import Compile.GC
 B = Compile.compile.build_ast()
 B.loadFile('test.nk')
 B.build()
@@ -15,7 +16,7 @@ tm = target.create_target_machine()
 Moudle = ir.Module("merock")
 Moudle.triple = llvm.get_default_triple()      # before saving and parsing
 Moudle.data_layout = str(tm.target_data)
-
+print(B.walk_gc())
 B.walk_compile(Moudle)
 file = save.Save(Moudle)
 file.save_file("main.ll")
