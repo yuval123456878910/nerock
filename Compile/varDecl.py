@@ -19,7 +19,11 @@ def GetType(data):
 
 
 def varDecl(listener, ctx: nerockParser.Decl_varContext):
-    if FormatType(ctx.typesKeyword().getText()) != str(listener.last_value.type):
+    decl_type = FormatType(ctx.typesKeyword().getText())
+    got_type = str(listener.last_value.type)
+    if decl_type == 'str' and got_type in ['i8*', 'ptr']:
+        pass  # הטיפוסים מתאימים, הכל טוב
+    elif decl_type != got_type:
         raise TypeError("Unmaching types in var decleration!", ctx.typesKeyword().getText(),  str(listener.last_value.type))
     var = listener.builder.alloca(listener.last_value.type, name=ctx.ID().getText())
     listener.builder.store(listener.last_value, var)

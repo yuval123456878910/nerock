@@ -64,6 +64,31 @@ def Condition_BIGGER_L(listener, ctx: nerockParser.ExprContext):
     listener.last_value = ConditionValue
     listener.values[ctx] = ConditionValue
 
+def LoadString(listener, ctx: nerockParser.ExprContext):
+    text = ctx.getText()[1:-1] # bewere the getText gets: "<text>" insted of <text>
+
+    text = (
+    text.replace(r"\n", "\n")
+        .replace(r"\r", "\r")
+        .replace(r"\t", "\t")
+        .replace(r"\\", "\\")
+        .replace(r"\"", '"')
+        .replace(r"\'", "'")
+    )
+
+    encoded_text =  bytearray(text.encode("utf-8") + b"\x00")
+    arrayType = ir.ArrayType(ir.IntType(8), len(encoded_text))
+    str_const = ir.Constant(arrayType, encoded_text)
+    auto_name = listener.Moudle.get_unique_name("") 
+    GlobalVariable = ir.GlobalVariable(listener.Moudle, str_const.type, name=auto_name)
+    GlobalVariable.global_constant = True
+    GlobalVariable.initializer = str_const
+    zero = ir.Constant(ir.IntType(32), 0)
+    ptr = listener.builder.gep(GlobalVariable, [zero, zero])
+    listener.last_value = ptr
+    listener.values[ctx] = ptr
+    print(str_const)
+
 def Expr(listener, ctx: nerockParser.ExprContext):
     if ctx in listener.values:
         return listener.values[ctx]
@@ -76,6 +101,9 @@ def Expr(listener, ctx: nerockParser.ExprContext):
             listener.values[ctx] = listener.last_value
         elif ctx.atom().ID() is not None:
             LoadID(listener, ctx)
+
+        elif ctx.atom().STRING() is not None:
+            LoadString(listener, ctx)
 
     if ctx.PLUS() is not None:
         Expr(listener, ctx.expr(0))
