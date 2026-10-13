@@ -5,6 +5,9 @@ from .returnType import typeMatch
 from llvmlite import ir
 import Compile.packager
 
+def ExistFunc(lister,name: str):
+    return lister.Funcs.get(name)
+
 def getReturnType(ctx: AST.nerockParser.nerockParser.Func_declerationContext):
     return ctx.returnFunc().typesKeyword().getText()
 

@@ -15,7 +15,7 @@ func_decleration: DECL_FUNC
     ;
 
 decl_var: 'var' ID typesKeyword '=' expr;
-decl_malloc: 'manual' 'malloc' '(' typesKeyword ',' expr ')' ':' ID ;
+decl_malloc: 'manual' 'malloc' '(' expr ')' ':' ID ;
 // maual malloc()
 
 call: ID '(' (expr (',' expr)*)? ')';

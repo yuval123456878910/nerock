@@ -1,7 +1,7 @@
 from llvmlite import ir
 
 from .dependesise import *
-from . import funcDecl, packager, varDecl, expr
+from . import funcDecl, packager, varDecl, expr, mallocing
 from .returnType import typeMatch
 
 class Listener(nerockListener):
@@ -20,6 +20,8 @@ class Listener(nerockListener):
 		self.GC_LOAD_FUNCTIONS = []
 		self.GC_LOAD_VAR_REF = {}
 		self.values = {}
+
+		self.mallocated_vars = []
 
 		self.Included_libaries: dict[str, str] = {}
 
@@ -43,5 +45,12 @@ class Listener(nerockListener):
 		return super().exitExpr(ctx)
 	
 	def exitReturn(self, ctx):
+		for ptr in self.mallocated_vars:
+			self.builder.call(self.Funcs["free"], [ptr])
 		self.builder.ret(self.last_value)
+		self.mallocated_vars = []
 		return super().enterReturn(ctx)
+
+	def exitDecl_malloc(self, ctx):
+		mallocing.mallocCreate(self, ctx)
+		return super().exitDecl_malloc(ctx)

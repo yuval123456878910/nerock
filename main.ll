@@ -2,13 +2,36 @@
 target triple = "x86_64-pc-windows-msvc"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
 
+declare void @"free"(i8* %".1")
+
 define i32 @"main"()
 {
 entry:
   %".2" = getelementptr [4 x i8], [4 x i8]* @".1", i32 0, i32 0
   %"a" = alloca i8*
   store i8* %".2", i8** %"a"
-  ret i32 1
+  %".4" = zext i32 10 to i64
+  %"h1" = call i8* @"malloc"(i64 %".4")
+  %"h1.addr" = alloca i8*
+  store i8* %"h1", i8** %"h1.addr"
+  %".6" = zext i32 10 to i64
+  %"hi" = call i8* @"malloc"(i64 %".6")
+  %"hi.addr" = alloca i8*
+  store i8* %"hi", i8** %"hi.addr"
+  %"Now" = call i32 @"Now"(i32 4)
+  call void @"free"(i8* %"h1")
+  call void @"free"(i8* %"hi")
+  ret i32 %"Now"
+}
+
+define i32 @"Now"(i32 %".1")
+{
+entry:
+  %"num" = alloca i32
+  store i32 %".1", i32* %"num"
+  %"num.1" = load i32, i32* %"num"
+  ret i32 2
 }
 
 @".1" = constant [4 x i8] c"wow\00"
+declare i8* @"malloc"(i64 %".1")

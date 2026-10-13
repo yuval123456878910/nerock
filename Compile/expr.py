@@ -87,7 +87,6 @@ def LoadString(listener, ctx: nerockParser.ExprContext):
     ptr = listener.builder.gep(GlobalVariable, [zero, zero])
     listener.last_value = ptr
     listener.values[ctx] = ptr
-    print(str_const)
 
 # insted of malloc every time, use a function to use repitedly
 def FastMalloc(PointerSize, Size):

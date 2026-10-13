@@ -1,6 +1,14 @@
 
+
+
 decl main() -> i32 {
     var a str = "wow"
-    return 1
+    manual malloc(10): h1
+    manual malloc(10): hi
+    return Now(4)
 }
 
+
+decl Now(i32 num) -> i32 {
+    return num * 2
+}

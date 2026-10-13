@@ -10,53 +10,53 @@ else:
 
 def serializedATN():
     return [
-        4,1,32,145,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,32,143,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,1,0,4,0,32,8,0,11,0,12,0,33,1,0,1,0,1,1,1,1,1,1,1,1,1,
         1,1,1,3,1,44,8,1,1,2,1,2,5,2,48,8,2,10,2,12,2,51,9,2,1,2,1,2,1,3,
         1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,5,1,5,
-        1,5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,5,6,82,8,6,10,6,12,6,85,
-        9,6,3,6,87,8,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,96,8,7,1,7,1,7,1,
-        7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,110,8,7,10,7,12,7,113,
-        9,7,1,8,1,8,1,9,1,9,1,9,1,10,1,10,1,10,1,11,1,11,1,11,1,11,5,11,
-        127,8,11,10,11,12,11,130,9,11,3,11,132,8,11,1,11,1,11,1,12,1,12,
-        3,12,138,8,12,1,13,1,13,1,14,1,14,1,14,1,14,0,1,14,15,0,2,4,6,8,
-        10,12,14,16,18,20,22,24,26,28,0,5,1,0,16,17,1,0,14,15,1,0,18,19,
-        1,0,22,26,2,0,27,29,31,31,147,0,31,1,0,0,0,2,43,1,0,0,0,4,45,1,0,
-        0,0,6,54,1,0,0,0,8,60,1,0,0,0,10,66,1,0,0,0,12,76,1,0,0,0,14,95,
-        1,0,0,0,16,114,1,0,0,0,18,116,1,0,0,0,20,119,1,0,0,0,22,122,1,0,
-        0,0,24,137,1,0,0,0,26,139,1,0,0,0,28,141,1,0,0,0,30,32,3,2,1,0,31,
-        30,1,0,0,0,32,33,1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,35,1,0,0,
-        0,35,36,5,0,0,1,36,1,1,0,0,0,37,44,3,6,3,0,38,44,3,14,7,0,39,44,
-        3,8,4,0,40,44,3,28,14,0,41,44,3,18,9,0,42,44,3,10,5,0,43,37,1,0,
-        0,0,43,38,1,0,0,0,43,39,1,0,0,0,43,40,1,0,0,0,43,41,1,0,0,0,43,42,
-        1,0,0,0,44,3,1,0,0,0,45,49,5,1,0,0,46,48,3,2,1,0,47,46,1,0,0,0,48,
-        51,1,0,0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,52,1,0,0,0,51,49,1,0,0,
-        0,52,53,5,2,0,0,53,5,1,0,0,0,54,55,5,21,0,0,55,56,5,27,0,0,56,57,
-        3,22,11,0,57,58,3,24,12,0,58,59,3,4,2,0,59,7,1,0,0,0,60,61,5,3,0,
-        0,61,62,5,27,0,0,62,63,3,16,8,0,63,64,5,4,0,0,64,65,3,14,7,0,65,
-        9,1,0,0,0,66,67,5,5,0,0,67,68,5,6,0,0,68,69,5,7,0,0,69,70,3,16,8,
-        0,70,71,5,8,0,0,71,72,3,14,7,0,72,73,5,9,0,0,73,74,5,10,0,0,74,75,
-        5,27,0,0,75,11,1,0,0,0,76,77,5,27,0,0,77,86,5,7,0,0,78,83,3,14,7,
-        0,79,80,5,8,0,0,80,82,3,14,7,0,81,79,1,0,0,0,82,85,1,0,0,0,83,81,
-        1,0,0,0,83,84,1,0,0,0,84,87,1,0,0,0,85,83,1,0,0,0,86,78,1,0,0,0,
-        86,87,1,0,0,0,87,88,1,0,0,0,88,89,5,9,0,0,89,13,1,0,0,0,90,91,6,
-        7,-1,0,91,96,3,12,6,0,92,96,3,26,13,0,93,94,5,15,0,0,94,96,3,14,
-        7,5,95,90,1,0,0,0,95,92,1,0,0,0,95,93,1,0,0,0,96,111,1,0,0,0,97,
-        98,10,4,0,0,98,99,7,0,0,0,99,110,3,14,7,5,100,101,10,3,0,0,101,102,
-        7,1,0,0,102,110,3,14,7,4,103,104,10,2,0,0,104,105,7,2,0,0,105,110,
-        3,14,7,3,106,107,10,1,0,0,107,108,5,20,0,0,108,110,3,14,7,2,109,
-        97,1,0,0,0,109,100,1,0,0,0,109,103,1,0,0,0,109,106,1,0,0,0,110,113,
-        1,0,0,0,111,109,1,0,0,0,111,112,1,0,0,0,112,15,1,0,0,0,113,111,1,
-        0,0,0,114,115,7,3,0,0,115,17,1,0,0,0,116,117,5,11,0,0,117,118,5,
-        27,0,0,118,19,1,0,0,0,119,120,3,16,8,0,120,121,5,27,0,0,121,21,1,
-        0,0,0,122,131,5,7,0,0,123,128,3,20,10,0,124,125,5,8,0,0,125,127,
-        3,20,10,0,126,124,1,0,0,0,127,130,1,0,0,0,128,126,1,0,0,0,128,129,
-        1,0,0,0,129,132,1,0,0,0,130,128,1,0,0,0,131,123,1,0,0,0,131,132,
-        1,0,0,0,132,133,1,0,0,0,133,134,5,9,0,0,134,23,1,0,0,0,135,136,5,
-        12,0,0,136,138,3,16,8,0,137,135,1,0,0,0,137,138,1,0,0,0,138,25,1,
-        0,0,0,139,140,7,4,0,0,140,27,1,0,0,0,141,142,5,13,0,0,142,143,3,
-        14,7,0,143,29,1,0,0,0,11,33,43,49,83,86,95,109,111,128,131,137
+        1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,6,5,6,80,8,6,10,6,12,6,83,9,6,3,6,
+        85,8,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,94,8,7,1,7,1,7,1,7,1,7,1,
+        7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,108,8,7,10,7,12,7,111,9,7,1,8,
+        1,8,1,9,1,9,1,9,1,10,1,10,1,10,1,11,1,11,1,11,1,11,5,11,125,8,11,
+        10,11,12,11,128,9,11,3,11,130,8,11,1,11,1,11,1,12,1,12,3,12,136,
+        8,12,1,13,1,13,1,14,1,14,1,14,1,14,0,1,14,15,0,2,4,6,8,10,12,14,
+        16,18,20,22,24,26,28,0,5,1,0,16,17,1,0,14,15,1,0,18,19,1,0,22,26,
+        2,0,27,29,31,31,145,0,31,1,0,0,0,2,43,1,0,0,0,4,45,1,0,0,0,6,54,
+        1,0,0,0,8,60,1,0,0,0,10,66,1,0,0,0,12,74,1,0,0,0,14,93,1,0,0,0,16,
+        112,1,0,0,0,18,114,1,0,0,0,20,117,1,0,0,0,22,120,1,0,0,0,24,135,
+        1,0,0,0,26,137,1,0,0,0,28,139,1,0,0,0,30,32,3,2,1,0,31,30,1,0,0,
+        0,32,33,1,0,0,0,33,31,1,0,0,0,33,34,1,0,0,0,34,35,1,0,0,0,35,36,
+        5,0,0,1,36,1,1,0,0,0,37,44,3,6,3,0,38,44,3,14,7,0,39,44,3,8,4,0,
+        40,44,3,28,14,0,41,44,3,18,9,0,42,44,3,10,5,0,43,37,1,0,0,0,43,38,
+        1,0,0,0,43,39,1,0,0,0,43,40,1,0,0,0,43,41,1,0,0,0,43,42,1,0,0,0,
+        44,3,1,0,0,0,45,49,5,1,0,0,46,48,3,2,1,0,47,46,1,0,0,0,48,51,1,0,
+        0,0,49,47,1,0,0,0,49,50,1,0,0,0,50,52,1,0,0,0,51,49,1,0,0,0,52,53,
+        5,2,0,0,53,5,1,0,0,0,54,55,5,21,0,0,55,56,5,27,0,0,56,57,3,22,11,
+        0,57,58,3,24,12,0,58,59,3,4,2,0,59,7,1,0,0,0,60,61,5,3,0,0,61,62,
+        5,27,0,0,62,63,3,16,8,0,63,64,5,4,0,0,64,65,3,14,7,0,65,9,1,0,0,
+        0,66,67,5,5,0,0,67,68,5,6,0,0,68,69,5,7,0,0,69,70,3,14,7,0,70,71,
+        5,8,0,0,71,72,5,9,0,0,72,73,5,27,0,0,73,11,1,0,0,0,74,75,5,27,0,
+        0,75,84,5,7,0,0,76,81,3,14,7,0,77,78,5,10,0,0,78,80,3,14,7,0,79,
+        77,1,0,0,0,80,83,1,0,0,0,81,79,1,0,0,0,81,82,1,0,0,0,82,85,1,0,0,
+        0,83,81,1,0,0,0,84,76,1,0,0,0,84,85,1,0,0,0,85,86,1,0,0,0,86,87,
+        5,8,0,0,87,13,1,0,0,0,88,89,6,7,-1,0,89,94,3,12,6,0,90,94,3,26,13,
+        0,91,92,5,15,0,0,92,94,3,14,7,5,93,88,1,0,0,0,93,90,1,0,0,0,93,91,
+        1,0,0,0,94,109,1,0,0,0,95,96,10,4,0,0,96,97,7,0,0,0,97,108,3,14,
+        7,5,98,99,10,3,0,0,99,100,7,1,0,0,100,108,3,14,7,4,101,102,10,2,
+        0,0,102,103,7,2,0,0,103,108,3,14,7,3,104,105,10,1,0,0,105,106,5,
+        20,0,0,106,108,3,14,7,2,107,95,1,0,0,0,107,98,1,0,0,0,107,101,1,
+        0,0,0,107,104,1,0,0,0,108,111,1,0,0,0,109,107,1,0,0,0,109,110,1,
+        0,0,0,110,15,1,0,0,0,111,109,1,0,0,0,112,113,7,3,0,0,113,17,1,0,
+        0,0,114,115,5,11,0,0,115,116,5,27,0,0,116,19,1,0,0,0,117,118,3,16,
+        8,0,118,119,5,27,0,0,119,21,1,0,0,0,120,129,5,7,0,0,121,126,3,20,
+        10,0,122,123,5,10,0,0,123,125,3,20,10,0,124,122,1,0,0,0,125,128,
+        1,0,0,0,126,124,1,0,0,0,126,127,1,0,0,0,127,130,1,0,0,0,128,126,
+        1,0,0,0,129,121,1,0,0,0,129,130,1,0,0,0,130,131,1,0,0,0,131,132,
+        5,8,0,0,132,23,1,0,0,0,133,134,5,12,0,0,134,136,3,16,8,0,135,133,
+        1,0,0,0,135,136,1,0,0,0,136,25,1,0,0,0,137,138,7,4,0,0,138,27,1,
+        0,0,0,139,140,5,13,0,0,140,141,3,14,7,0,141,29,1,0,0,0,11,33,43,
+        49,81,84,93,107,109,126,129,135
     ]
 
 class nerockParser ( Parser ):
@@ -70,7 +70,7 @@ class nerockParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'{'", "'}'", "'var'", "'='", "'manual'", 
-                     "'malloc'", "'('", "','", "')'", "':'", "'declare'", 
+                     "'malloc'", "'('", "')'", "':'", "','", "'declare'", 
                      "'->'", "'return'", "'+'", "'-'", "'*'", "'/'", "'>'", 
                      "'<'", "'=='", "'decl'", "'i32'", "'str'", "'f32'", 
                      "'i1'", "'v'" ]
@@ -518,10 +518,6 @@ class nerockParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def typesKeyword(self):
-            return self.getTypedRuleContext(nerockParser.TypesKeywordContext,0)
-
-
         def expr(self):
             return self.getTypedRuleContext(nerockParser.ExprContext,0)
 
@@ -562,16 +558,12 @@ class nerockParser ( Parser ):
             self.state = 68
             self.match(nerockParser.T__6)
             self.state = 69
-            self.typesKeyword()
+            self.expr(0)
             self.state = 70
             self.match(nerockParser.T__7)
             self.state = 71
-            self.expr(0)
-            self.state = 72
             self.match(nerockParser.T__8)
-            self.state = 73
-            self.match(nerockParser.T__9)
-            self.state = 74
+            self.state = 72
             self.match(nerockParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -626,32 +618,32 @@ class nerockParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 76
+            self.state = 74
             self.match(nerockParser.ID)
-            self.state = 77
+            self.state = 75
             self.match(nerockParser.T__6)
-            self.state = 86
+            self.state = 84
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 3087040512) != 0):
-                self.state = 78
+                self.state = 76
                 self.expr(0)
-                self.state = 83
+                self.state = 81
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==8:
-                    self.state = 79
-                    self.match(nerockParser.T__7)
-                    self.state = 80
+                while _la==10:
+                    self.state = 77
+                    self.match(nerockParser.T__9)
+                    self.state = 78
                     self.expr(0)
-                    self.state = 85
+                    self.state = 83
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 88
-            self.match(nerockParser.T__8)
+            self.state = 86
+            self.match(nerockParser.T__7)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -733,29 +725,29 @@ class nerockParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 95
+            self.state = 93
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
-                self.state = 91
+                self.state = 89
                 self.call()
                 pass
 
             elif la_ == 2:
-                self.state = 92
+                self.state = 90
                 self.atom()
                 pass
 
             elif la_ == 3:
-                self.state = 93
+                self.state = 91
                 self.match(nerockParser.MIN)
-                self.state = 94
+                self.state = 92
                 self.expr(5)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 111
+            self.state = 109
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -763,78 +755,78 @@ class nerockParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 109
+                    self.state = 107
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
                     if la_ == 1:
                         localctx = nerockParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 97
+                        self.state = 95
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 98
+                        self.state = 96
                         _la = self._input.LA(1)
                         if not(_la==16 or _la==17):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 99
+                        self.state = 97
                         self.expr(5)
                         pass
 
                     elif la_ == 2:
                         localctx = nerockParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 100
+                        self.state = 98
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 101
+                        self.state = 99
                         _la = self._input.LA(1)
                         if not(_la==14 or _la==15):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 102
+                        self.state = 100
                         self.expr(4)
                         pass
 
                     elif la_ == 3:
                         localctx = nerockParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 103
+                        self.state = 101
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 104
+                        self.state = 102
                         _la = self._input.LA(1)
                         if not(_la==18 or _la==19):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 105
+                        self.state = 103
                         self.expr(3)
                         pass
 
                     elif la_ == 4:
                         localctx = nerockParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 106
+                        self.state = 104
                         if not self.precpred(self._ctx, 1):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                        self.state = 107
+                        self.state = 105
                         self.match(nerockParser.EQUAL_C)
-                        self.state = 108
+                        self.state = 106
                         self.expr(2)
                         pass
 
              
-                self.state = 113
+                self.state = 111
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
 
@@ -896,7 +888,7 @@ class nerockParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 114
+            self.state = 112
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 130023424) != 0)):
                 self._errHandler.recoverInline(self)
@@ -948,9 +940,9 @@ class nerockParser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_importScript)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 116
+            self.state = 114
             self.match(nerockParser.T__10)
-            self.state = 117
+            self.state = 115
             self.match(nerockParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -1001,9 +993,9 @@ class nerockParser ( Parser ):
         self.enterRule(localctx, 20, self.RULE_param)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 119
+            self.state = 117
             self.typesKeyword()
-            self.state = 120
+            self.state = 118
             self.match(nerockParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -1055,30 +1047,30 @@ class nerockParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 122
+            self.state = 120
             self.match(nerockParser.T__6)
-            self.state = 131
+            self.state = 129
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 130023424) != 0):
-                self.state = 123
+                self.state = 121
                 self.param()
-                self.state = 128
+                self.state = 126
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==8:
-                    self.state = 124
-                    self.match(nerockParser.T__7)
-                    self.state = 125
+                while _la==10:
+                    self.state = 122
+                    self.match(nerockParser.T__9)
+                    self.state = 123
                     self.param()
-                    self.state = 130
+                    self.state = 128
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 133
-            self.match(nerockParser.T__8)
+            self.state = 131
+            self.match(nerockParser.T__7)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1126,13 +1118,13 @@ class nerockParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 137
+            self.state = 135
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==12:
-                self.state = 135
+                self.state = 133
                 self.match(nerockParser.T__11)
-                self.state = 136
+                self.state = 134
                 self.typesKeyword()
 
 
@@ -1191,7 +1183,7 @@ class nerockParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 139
+            self.state = 137
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 3087007744) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1244,9 +1236,9 @@ class nerockParser ( Parser ):
         self.enterRule(localctx, 28, self.RULE_return)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 141
+            self.state = 139
             self.match(nerockParser.T__12)
-            self.state = 142
+            self.state = 140
             self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
