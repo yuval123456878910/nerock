@@ -53,6 +53,15 @@ class nerockListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nerockParser#decl_malloc.
+    def enterDecl_malloc(self, ctx:nerockParser.Decl_mallocContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#decl_malloc.
+    def exitDecl_malloc(self, ctx:nerockParser.Decl_mallocContext):
+        pass
+
+
     # Enter a parse tree produced by nerockParser#call.
     def enterCall(self, ctx:nerockParser.CallContext):
         pass

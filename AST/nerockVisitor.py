@@ -34,6 +34,11 @@ class nerockVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by nerockParser#decl_malloc.
+    def visitDecl_malloc(self, ctx:nerockParser.Decl_mallocContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by nerockParser#call.
     def visitCall(self, ctx:nerockParser.CallContext):
         return self.visitChildren(ctx)

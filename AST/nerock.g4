@@ -1,7 +1,7 @@
 grammar nerock;
 
 prog: command+ EOF;
-command: func_decleration  | expr | decl_var | return | importScript;
+command: func_decleration  | expr | decl_var | return | importScript | decl_malloc;
 
 block: '{' command* '}';
 
@@ -15,6 +15,8 @@ func_decleration: DECL_FUNC
     ;
 
 decl_var: 'var' ID typesKeyword '=' expr;
+decl_malloc: 'manual' 'malloc' '(' typesKeyword ',' expr ')' ':' ID ;
+// maual malloc()
 
 call: ID '(' (expr (',' expr)*)? ')';
 
