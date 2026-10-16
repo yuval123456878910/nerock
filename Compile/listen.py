@@ -54,3 +54,30 @@ class Listener(nerockListener):
 	def exitDecl_malloc(self, ctx):
 		mallocing.mallocCreate(self, ctx)
 		return super().exitDecl_malloc(ctx)
+
+	def enterCommand(self, ctx):
+		if ctx.return_() is not None or ctx.func_decleration() is not None:
+			return
+		self._clear()	
+
+	def _clear(self):
+		freeFunc = self.Funcs["free"]
+		NewGC = self.GC_LOAD_VAR_REF.copy()
+		NewGC[self.CurrentFunc.name] = self.GC_LOAD_VAR_REF[self.CurrentFunc.name].copy()
+
+		for ptr in self.GC_LOAD_VAR_REF[self.CurrentFunc.name].items():
+		
+			if ptr[1].refrences > 0: continue
+			if ptr[0] not in self.variables: continue
+			slot = self.variables[ptr[0]]
+			heap_ptr = self.builder.load(slot, name=f"{ptr[0]}.ptr")
+			self.builder.call(freeFunc, [heap_ptr])
+			# The return cleanup must not free this allocation again.
+			self.mallocated_vars = [
+				allocated for allocated in self.mallocated_vars
+				if allocated.name != ptr[0]
+			]
+			NewGC[self.CurrentFunc.name].pop(ptr[0])
+
+		self.GC_LOAD_VAR_REF = NewGC
+			

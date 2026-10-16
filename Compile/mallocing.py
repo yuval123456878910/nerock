@@ -32,6 +32,7 @@ def mallocCreate(lis, ctx: nerockParser.Decl_mallocContext):
         size = size_value
 
     ptr = lis.builder.call(malloc, [size], name=name)
+    
     slot = lis.builder.alloca(ptr.type, name=f"{name}.addr")
     lis.builder.store(ptr, slot)
     lis.variables[name] = slot

@@ -37,6 +37,24 @@ def sub(listener, ctx: nerockParser.ExprContext):
     listener.values[ctx] = sub
 
 
+def multiply(listener, ctx: nerockParser.ExprContext):
+    left = listener.values[ctx.expr(0)]
+    right = listener.values[ctx.expr(1)]
+    if left.type != right.type:
+        raise TypeError(f"Cannot multiply values of different types: {left.type} and {right.type}")
+
+    match FormatType(str(left.type)):
+        case 'i32' | 'i64':
+            result = listener.builder.mul(left, right)
+        case 'f32' | 'f64':
+            result = listener.builder.fmul(left, right)
+        case _:
+            raise TypeError(f"Multiplication is not supported for type {left.type}")
+
+    listener.last_value = result
+    listener.values[ctx] = result
+
+
 
 def LoadID(listener, ctx: nerockParser.ExprContext):
     var = listener.variables.get(ctx.atom().ID().getText())
@@ -117,6 +135,11 @@ def Expr(listener, ctx: nerockParser.ExprContext):
         Expr(listener, ctx.expr(0))
         Expr(listener, ctx.expr(1))
         sub(listener, ctx)
+
+    if ctx.MUL() is not None:
+        Expr(listener, ctx.expr(0))
+        Expr(listener, ctx.expr(1))
+        multiply(listener, ctx)
 
     if ctx.call() is not None:
         call = ctx.call()
