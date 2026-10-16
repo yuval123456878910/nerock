@@ -54,8 +54,22 @@ def multiply(listener, ctx: nerockParser.ExprContext):
     listener.last_value = result
     listener.values[ctx] = result
 
+def div(listener, ctx: nerockParser.ExprContext):
+    left = listener.values[ctx.expr(0)]
+    right = listener.values[ctx.expr(1)]
+
+    if left.type != right.type:
+        raise TypeError("Not the same type during divition")
+
+    match FormatType(str(right.type)):
+        case 'i32' | 'i64':
+            result = listener.builder.sdiv(left, right)
+        case 'f32' | 'f64':
+            result = listener.builder.fdiv(left, right)
 
 
+    listener.last_value = result
+    listener.values[ctx] = result
 def LoadID(listener, ctx: nerockParser.ExprContext):
     var = listener.variables.get(ctx.atom().ID().getText())
     if var is None:
@@ -140,6 +154,10 @@ def Expr(listener, ctx: nerockParser.ExprContext):
         Expr(listener, ctx.expr(0))
         Expr(listener, ctx.expr(1))
         multiply(listener, ctx)
+    if ctx.DIV() is not None:
+        Expr(listener, ctx.expr(0))
+        Expr(listener, ctx.expr(1))
+        div(listener, ctx)
 
     if ctx.call() is not None:
         call = ctx.call()

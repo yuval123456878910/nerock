@@ -7,33 +7,6 @@ declare void @"free"(i8* %".1")
 define i32 @"main"()
 {
 entry:
-  %".2" = getelementptr [4 x i8], [4 x i8]* @".1", i32 0, i32 0
-  %"a" = alloca i8*
-  store i8* %".2", i8** %"a"
-  %".4" = zext i32 10 to i64
-  %"h1" = call i8* @"malloc"(i64 %".4")
-  %"h1.addr" = alloca i8*
-  store i8* %"h1", i8** %"h1.addr"
-  %"h1.ptr" = load i8*, i8** %"h1.addr"
-  call void @"free"(i8* %"h1.ptr")
-  %".7" = zext i32 10 to i64
-  %"hi" = call i8* @"malloc"(i64 %".7")
-  %"hi.addr" = alloca i8*
-  store i8* %"hi", i8** %"hi.addr"
-  %"Now" = call i32 @"Now"(i32 4)
-  call void @"free"(i8* %"hi")
-  ret i32 %"Now"
+  %".2" = sdiv i32 9, 2
+  ret i32 %".2"
 }
-
-define i32 @"Now"(i32 %".1")
-{
-entry:
-  %"num" = alloca i32
-  store i32 %".1", i32* %"num"
-  %"num.1" = load i32, i32* %"num"
-  %".4" = mul i32 %"num.1", 2
-  ret i32 %".4"
-}
-
-@".1" = constant [4 x i8] c"wow\00"
-declare i8* @"malloc"(i64 %".1")
