@@ -7,6 +7,9 @@ declare void @"free"(i8* %".1")
 define i32 @"main"()
 {
 entry:
-  %".2" = sdiv i32 9, 2
-  ret i32 %".2"
+  %".2" = icmp sgt i32 8, 2
+  %"i" = alloca i1
+  store i1 %".2", i1* %"i"
+  %".4" = sdiv i32 9, 2
+  ret i32 %".4"
 }

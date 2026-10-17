@@ -80,6 +80,33 @@ class nerockListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nerockParser#if_decl.
+    def enterIf_decl(self, ctx:nerockParser.If_declContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#if_decl.
+    def exitIf_decl(self, ctx:nerockParser.If_declContext):
+        pass
+
+
+    # Enter a parse tree produced by nerockParser#elif.
+    def enterElif(self, ctx:nerockParser.ElifContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#elif.
+    def exitElif(self, ctx:nerockParser.ElifContext):
+        pass
+
+
+    # Enter a parse tree produced by nerockParser#else.
+    def enterElse(self, ctx:nerockParser.ElseContext):
+        pass
+
+    # Exit a parse tree produced by nerockParser#else.
+    def exitElse(self, ctx:nerockParser.ElseContext):
+        pass
+
+
     # Enter a parse tree produced by nerockParser#typesKeyword.
     def enterTypesKeyword(self, ctx:nerockParser.TypesKeywordContext):
         pass

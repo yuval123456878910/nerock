@@ -1,5 +1,6 @@
 
 import AST
+from Compile.funcDecl import funcDecl
 from . import packager
 from .returnType import typeMatch
 from AST.nerockParser import nerockParser
@@ -121,8 +122,50 @@ def LoadString(listener, ctx: nerockParser.ExprContext):
     listener.values[ctx] = ptr
 
 # insted of malloc every time, use a function to use repitedly
-def FastMalloc(PointerSize, Size):
-    pass
+# ptr, ptr slot: <name>.addr
+def FastMalloc(lis,name, Size):
+    i8 = ir.IntType(8)
+    size_type = ir.IntType(64)
+    size_value =  size_type(Size)
+    
+    
+    malloc_type = ir.FunctionType(i8.as_pointer(), [size_type])
+    malloc = funcDecl.ExistFunc(lis, name)
+
+    if malloc is None:
+        malloc = ir.Function(lis.Moudle, malloc_type, name=name)
+        lis.Funcs[name] = malloc
+    elif malloc.function_type != malloc_type:
+        raise TypeError("malloc was already declared with a different function type")
+
+    if size_value.type.width > size_type.width:
+        size = lis.builder.trunc(size_value, size_type)
+    elif size_value.type.width < size_type.width:
+        size = lis.builder.zext(size_value, size_type)
+    else:
+        size = size_value
+
+    ptr = lis.builder.call(malloc, [size], name=name)
+    
+    slot = lis.builder.alloca(ptr.type, name=f"{name}.addr")
+    lis.builder.store(ptr, slot)
+    return ptr, slot
+
+def Condtition_LOWER_L(listener, ctx: nerockParser.ExprContext):
+    expr1 = listener.values[ctx.expr(0)]
+    expr2 = listener.values[ctx.expr(1)]
+
+    if expr1.type != expr2.type:
+        raise TypeError("Comperetion type arnt the same")
+    ConditionValue = None
+    match FormatType(str(expr1.type)):
+        case 'i32' | 'i64':
+            ConditionValue = listener.builder.icmp_signed("<", expr1, expr2)
+        case 'f32' | 'f64':
+            ConditionValue = listener.builder.fcmp_ordered("<",expr1, expr2)
+
+    listener.last_value = ConditionValue
+    listener.values[ctx] = ConditionValue
 
 def Expr(listener, ctx: nerockParser.ExprContext):
     if ctx in listener.values:
@@ -173,6 +216,10 @@ def Expr(listener, ctx: nerockParser.ExprContext):
         Expr(listener, ctx.expr(0))
         Expr(listener, ctx.expr(1))
         Condition_BIGGER_L(listener, ctx)
+
+    if ctx.LOWER_L() is not None:
+        Expr(listener, ctx.expr(0))
+        Expr(listener, ctx.expr(1))
 
 
 def ReadArgs(listener, exprs):

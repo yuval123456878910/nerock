@@ -1,3 +1,4 @@
 decl main() -> i32 {
+    var i i1= 8 > 2
     return 9 / 2
 }

@@ -1,7 +1,7 @@
 grammar nerock;
 
 prog: command+ EOF;
-command: func_decleration  | expr | decl_var | return | importScript | decl_malloc;
+command: func_decleration  | expr | decl_var | return | importScript | decl_malloc | if_decl;
 
 block: '{' command* '}';
 
@@ -29,6 +29,10 @@ expr: call
     | expr (BIGGER_L | LOWER_L) expr
     | expr EQUAL_C expr
     ;
+
+if_decl: 'if' expr block elif* else?;
+elif: 'elif' expr block;
+else: 'else' block;
 
 typesKeyword: INT_TYPE | STRING_TYPE | FLOAT_TYPE | VOID_TYPE | BOOL_TYPE;
 
